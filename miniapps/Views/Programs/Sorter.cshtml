@@ -1,24 +1,16 @@
-﻿<h1>Sorter</h1>
-<h4>A place for formating your text</h4>
+﻿@model miniapps.Models.SorterModel
+
+<h4>Sorter</h4>
+<p>A place for formating your text</p>
 <div class="main-sorter">
-<form class="d-flex flex-column mx-5">
+<form asp-action="Sorter" class="d-flex flex-column mx-5">
     <p class="my-2"><label>Text:</label></p>
-    <textarea class="p-2" rows="7" cols="20" autofocus>Some text...</textarea>
+    <textarea class="p-2" id="text-input" rows="7" cols="20" autofocus>Some text...</textarea>
     <div class="buttons mt-3 d-flex flex-nowrap">
-        <div class="button">
-            <label>Column Sort</label>
-            <button type="submit">Run</button>
-        </div>
-        <div class="button">
-            <label>Row Sort</label>
-            <button type="submit">Run</button>
-        </div>
-        <div class="button">
-            <label>Sort it to row</label>
-            <button type="submit">Run</button>
-        </div>
+        <button class="btn btn-primary" type="submit" id="sort-column" value="sortColumn">Column Sort</button>
+        <button class="btn btn-primary" type="submit" id="sort-row" value="sortRow">Row Sort</button>
     </div>
     <p class="my-2"><label>Output:</label></p>
-    <textarea class="p-2" rows="7" cols="20" autofocus></textarea>
+    <textarea class="p-2" id="text-output" rows="7" cols="20">@Model.textOutput</textarea>
 </form>
 </div>
