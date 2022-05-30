@@ -7,12 +7,16 @@ namespace miniapps.Controllers
 {
     public class ProductController : Controller
     {
-        
+        ProductsDAO productsDAO;
+
+        public ProductController()
+        {
+            productsDAO = new ProductsDAO();
+        }
+
         public IActionResult Index()
         {
-            HardCodedSampleDataRepository sample = new HardCodedSampleDataRepository();
-
-            return View(sample.GetAllProducts());
+            return View(productsDAO.GetAllProducts());
         }
     }
 }
