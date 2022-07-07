@@ -52,7 +52,31 @@ namespace miniapps.Services
 
         public List<ProductModel> SearchProducts(string searchTerm)
         {
-            throw new NotImplementedException();
+            List<ProductModel> foundProducts = new List<ProductModel>();
+
+            string sqlStatement = "SELECT * FROM dbo.products WHERE name LIKE @Name";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(sqlStatement, connection);
+                cmd.Parameters.AddWithValue("@Name", "%" + searchTerm + "%");
+
+                try
+                {
+                    connection.Open();
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        foundProducts.Add(new ProductModel { Id = (int)reader[0], Name = (string)reader[1], Price = (decimal)reader[2], Description = (string)reader[3] });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                return foundProducts;
+            }
         }
 
         public int update(ProductModel product)

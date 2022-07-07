@@ -18,5 +18,16 @@ namespace miniapps.Controllers
         {
             return View(productsDAO.GetAllProducts());
         }
+
+        public IActionResult SearchResults(string searchTerm)
+        {
+            List<ProductModel> products = productsDAO.SearchProducts(searchTerm);
+            return View("index", products);
+        }
+
+        public IActionResult SearchForm()
+        {
+            return View();
+        }
     }
 }
