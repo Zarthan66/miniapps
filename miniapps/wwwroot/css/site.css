@@ -40,3 +40,12 @@ body {
     width: 100px;
 }
 
+.form-group {
+    margin: 0 0 1rem 0.5rem;
+}
+
+.control-label {
+    margin-bottom: 0.2rem;
+}
+
+

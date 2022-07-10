@@ -6,10 +6,10 @@ namespace miniapps.Services
     {
         List<ProductModel> GetAllProducts();
         List<ProductModel> SearchProducts(string searchTerm);
-        ProductModel GetProduct(int id);
-        int insert(ProductModel product);
-        int delete(ProductModel product);
-        int update(ProductModel product);
+        ProductModel GetProductById(int id);
+        int Insert(ProductModel product);
+        int Delete(ProductModel product);
+        int Update(ProductModel product);
 
     }
 }
