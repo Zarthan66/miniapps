@@ -1,0 +1,48 @@
+﻿@model IEnumerable<miniapps.Models.ButtonGridModel>
+
+<style>
+    .game-button {
+        all: unset;
+        cursor: pointer;
+        width: 74px;
+        text-align: center;
+    }
+    .game-button-img {
+        width: 70%;
+    }
+    .button-zone {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .line-break {
+        flex-basis: 100%;
+        height:0;
+    }
+    .button-label {
+        font-size:12px;
+        text-align:center;
+    }
+</style>
+
+@{
+    string[] imgNames = { "btn_blue.png", "btn_green.png", "btn_orange.png", "btn_purple.png" };
+}
+
+<form class="button-zone">
+    @for(int i = 0; i < Model.Count(); i++)
+    {
+        // Start a newline every five elements
+        if(i % 5 == 0)
+        {
+            <div class="line-break"></div>
+        }
+        
+        <button class="game-button" name="buttonNumber" value="@Model.ElementAt(i).Id" type="submit" asp-controller="ButtonGrid" asp-action="HandleButtonClick">
+            <img class="game-button-img" src="~/img/@imgNames[Model.ElementAt(i).State]"/>
+            
+            <div class="button-label">
+                @Model.ElementAt(i).Id, @Model.ElementAt(i).State
+            </div>
+        </button>
+    }
+</form>
