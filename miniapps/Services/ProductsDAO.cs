@@ -5,7 +5,7 @@ namespace miniapps.Services
 {
     public class ProductsDAO : IProductDataService
     {
-        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Shop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=products;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public int Delete(ProductModel product)
         {
