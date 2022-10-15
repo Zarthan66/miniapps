@@ -1,0 +1,14 @@
+﻿@model miniapps.Models.ButtonGridModel
+
+@{
+    string[] imgNames = { "btn_blue.png", "btn_green.png", "btn_orange.png", "btn_purple.png" };
+    
+}
+
+<button class="game-button" name="buttonNumber" value="@Model.Id" type="submit" asp-controller="ButtonGrid" asp-action="ShowOneButton">
+    <img class="game-button-img" src="~/img/@imgNames[Model.State]" />
+    <div class="button-label">
+        @Model.Id, @Model.State
+    </div>
+</button>
+

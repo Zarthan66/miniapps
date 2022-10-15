@@ -26,23 +26,40 @@
 
 @{
     string[] imgNames = { "btn_blue.png", "btn_green.png", "btn_orange.png", "btn_purple.png" };
+    bool allMatch = true;
 }
 
 <form class="button-zone">
     @for(int i = 0; i < Model.Count(); i++)
     {
+        if (Model.ElementAt(0).State != Model.ElementAt(i).State)
+        {
+            allMatch = false;
+        }
+
         // Start a newline every five elements
         if(i % 5 == 0)
         {
             <div class="line-break"></div>
         }
-        
-        <button class="game-button" name="buttonNumber" value="@Model.ElementAt(i).Id" type="submit" asp-controller="ButtonGrid" asp-action="HandleButtonClick">
-            <img class="game-button-img" src="~/img/@imgNames[Model.ElementAt(i).State]"/>
-            
-            <div class="button-label">
-                @Model.ElementAt(i).Id, @Model.ElementAt(i).State
-            </div>
-        </button>
+        <div class="oneButton" id="@i">
+            <button class="game-button" name="buttonNumber" value="@Model.ElementAt(i).Id" type="submit" asp-controller="ButtonGrid" asp-action="ShowOneButton">
+                <img class="game-button-img" src="~/img/@imgNames[Model.ElementAt(i).State]" />
+
+                <div class="button-label">
+                    @Model.ElementAt(i).Id, @Model.ElementAt(i).State
+                </div>
+            </button>
+        </div>
+    }
+
+    @if (allMatch)
+    {
+        <p>Congratulations, all the buttons are matched</p>
+    }
+    else
+    {
+        <p>Your main objective is to match all the buttons</p>
     }
 </form>
+

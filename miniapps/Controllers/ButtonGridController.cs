@@ -29,5 +29,13 @@ namespace miniapps.Controllers
             buttons.ElementAt(btn).State = (buttons.ElementAt(btn).State + 1) % 4;
             return View("index", buttons);
         }
+
+        public IActionResult ShowOneButton(int buttonNumber)
+        {
+            buttons.ElementAt(buttonNumber).State = (buttons.ElementAt(buttonNumber).State + 1) % 4;
+            return PartialView(buttons.ElementAt(buttonNumber));
+        }
     }
+
 }
+
